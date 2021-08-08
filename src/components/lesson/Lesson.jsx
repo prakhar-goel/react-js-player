@@ -7,36 +7,36 @@ import  Container  from "@material-ui/core/Container"
 import { makeStyles } from "@material-ui/core/styles"
 import  Grid  from "@material-ui/core/Grid"
 import { Button } from "@material-ui/core"
+import Popup from "./popup"
+
+import EmployeeForm from "./EmployeeForm";
+// import * as employeeService from "../../services/employeeService";
 
 
 const useStyles = makeStyles({
-  controls1:{
+  controls:{
     position:"absolute",
-    top:440,
-    left:400,
-    right:70,
-    bottom:125,
+    top:500,
+    left:920,
+    right:408,
+    bottom:225,
     background:"rgba(0,0,0,0.6)",
     display:"flex",
   },
-  controls2:{
-    position:"absolute",
-    top:440,
-    left:400,
-    right:70,
-    bottom:125,
-    background:"rgba(0,0,0,0.6)",
-    display:"flex",
-  }
 });
 
 
 var  Lesson = function() {
+
   const classes = useStyles();
+  const [openPopup, setOpenPopup] = useState(false)
+  
+
+
   const [watchComplete, setWatchComplete] = useState(false)
   const handleWatchComplete = ({ playedSeconds }) => {
     console.log(playedSeconds);
-    if(playedSeconds >= 10 && playedSeconds <= 20){
+    if(playedSeconds >= 10 && playedSeconds <= 1000){
         setWatchComplete(true)
     } else{
         setWatchComplete(false)
@@ -60,7 +60,7 @@ var  Lesson = function() {
           <div>
             {watchComplete === true ? 
               <Grid container direction="row" alignItems="right" style={{padding:5}}> 
-              <div className={classes.controls1}>
+              <div className={classes.controls}>
                 <Grid item>
                   <Typography style={{color:"#fff"}}>Order you cloths <br/> while watching this show</Typography>
                 </Grid> 
@@ -68,6 +68,7 @@ var  Lesson = function() {
                   <Button 
                   variant="contained"
                   color="primary"
+                  onClick = {()=>setOpenPopup(true)}
                   >
                     ORDER NOW
                   </Button>
@@ -79,6 +80,13 @@ var  Lesson = function() {
             
           </div>
         </Container>
+        <Popup
+          openPopup = {openPopup}
+          setOpenPopup = {setOpenPopup}
+        >
+        {/* <EmployeeForm
+        /> */}
+        </Popup>
     </>
   )
 }

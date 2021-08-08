@@ -13,19 +13,3 @@
   background-color: springgreen;
   color: white;
 }
-
-.ads {
-  padding: 15px 20px;
-  margin: 20px 0;
-  display: inline-block;
-}
-
-.ads--not-complete {
-  background-color: gray;
-  color: darkgray;
-}
-
-.ads--is-complete {
-  background-color: springgreen;
-  color: white;
-}
