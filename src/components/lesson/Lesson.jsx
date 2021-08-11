@@ -36,7 +36,7 @@ var  Lesson = function() {
   const [watchComplete, setWatchComplete] = useState(false)
   const handleWatchComplete = ({ playedSeconds }) => {
     console.log(playedSeconds);
-    if(playedSeconds >= 10 && playedSeconds <= 1000){
+    if((playedSeconds >= 300 && playedSeconds <= 330) || (playedSeconds >= 600 && playedSeconds <= 630) || (playedSeconds >= 900 && playedSeconds <= 930) || (playedSeconds >= 1200 && playedSeconds <= 1230)){
         setWatchComplete(true)
     } else{
         setWatchComplete(false)

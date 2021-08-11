@@ -42,6 +42,7 @@ const Layout = ({ children }) => {
           © {new Date().getFullYear()}
           {` `}
           <a href="https://www.duit.io/">DUIT</a>
+          <p>Ads will be shown from: 5:00 to 5:30,&ensp; 10:00 to 10:30,&ensp; 15:00 to 15:30,&ensp; 20:00 to 20:30</p>
         </footer>
       </div>
     </>
