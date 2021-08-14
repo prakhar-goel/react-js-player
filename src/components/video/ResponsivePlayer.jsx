@@ -12,8 +12,7 @@ const ResponsivePlayer = ({ url, onProgress }) => {
         width="100%"
         height="100%"
         controls={true}
-        onProgress={onProgress}
-        
+        onProgress={onProgress}       
       />
     </div> 
   )

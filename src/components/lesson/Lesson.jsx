@@ -16,10 +16,14 @@ import EmployeeForm from "./EmployeeForm";
 const useStyles = makeStyles({
   controls:{
     position:"absolute",
-    top:500,
-    left:920,
-    right:408,
-    bottom:225,
+    // top:500,
+    // left:920,
+    // right:408,
+    // bottom:225,
+    top:-100,
+    left:500,
+    right:0,
+    bottom:50,
     background:"rgba(0,0,0,0.6)",
     display:"flex",
   },
@@ -59,9 +63,9 @@ var  Lesson = function() {
           {/* Ads */}
           <div>
             {watchComplete === true ? 
-              <Grid container direction="row" alignItems="right" style={{padding:5}}> 
+              <Grid container direction="row" alignItems="right" style={{padding:5, position: "relative"}}> 
               <div className={classes.controls}>
-                <Grid item>
+                <Grid item xs elevation={3}>
                   <Typography style={{color:"#fff"}}>Order you cloths <br/> while watching this show</Typography>
                 </Grid> 
                 <Grid item>
