@@ -9,9 +9,6 @@ import  Grid  from "@material-ui/core/Grid"
 import { Button } from "@material-ui/core"
 import Popup from "./popup"
 
-import EmployeeForm from "./EmployeeForm";
-// import * as employeeService from "../../services/employeeService";
-
 
 const useStyles = makeStyles({
   controls:{
@@ -88,8 +85,6 @@ var  Lesson = function() {
           openPopup = {openPopup}
           setOpenPopup = {setOpenPopup}
         >
-        {/* <EmployeeForm
-        /> */}
         </Popup>
     </>
   )

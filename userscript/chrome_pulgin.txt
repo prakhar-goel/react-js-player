@@ -1,0 +1,121 @@
+// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
+// @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
+// @author       You
+// @match        https://www.mxplayer.in/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+
+
+(function() {
+    'use strict';
+
+    waitForKeyElements ("#video-player_html5_api", actionFunction);
+    function actionFunction (video) {
+
+        //Ads Screen
+        var elem = document.createElement('div');
+        elem.setAttribute("id", "adspace");
+        elem.style.cssText = 'position:relative;width:25%;height:100%;opacity:0.8;z-index:1;background:#f00;top:0;left:0;pointer-events:none;display:none';
+        elem.className = "testele";
+
+        //order detail screen
+        var orderscreen = document.createElement('div');
+        orderscreen.setAttribute("id", "orderscreenid");
+        orderscreen.style.cssText = 'position:relative;width:30%;height:100%;opacity:0.8;z-index:1;background:#f00;top:0;left:0;pointer-events:none;display:block';
+        orderscreen.className = "odrscreen";
+
+        //payment screen
+        var paymentscreen = document.createElement('div');
+        paymentscreen.setAttribute("id", "paymentscreenid");
+        paymentscreen.style.cssText = 'position:relative;width:30%;height:100%;opacity:0.8;z-index:1;background:#f00;top:0;left:0;pointer-events:none;display:block';
+        paymentscreen.className = "pytscreen";
+
+        //function for inserting elements
+        function insertAfter(referenceNode, newNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        //inserting ads screen
+        var videodiv = document.getElementById("video-player_html5_api");
+        insertAfter(videodiv, elem);
+
+        //First Ad
+        var firstad = document.createElement('div');
+        firstad.setAttribute("id", "fid");
+        firstad.style.cssText ='margin-bottom:10px;position:relative;width:100%;height:50%;opacity:1;z-index:1;background:#371;top:0;left:0;pointer-events:none;display:block';
+        //image of 1st order
+        var fimg = document.createElement("img");
+        fimg.src = 'https://thumbs.dreamstime.com/b/realistic-detailed-d-pizza-ads-banner-concept-poster-card-vector-pizzeria-marketing-illustration-195553496.jpg';
+        fimg.setAttribute("height", "250");
+        fimg.setAttribute("width", "300");
+
+        //button for 1st order
+        let btnforad1 = document.createElement("button");
+        btnforad1.setAttribute("id", "buttonid");
+        btnforad1.innerHTML = "Click Me";
+        btnforad1.style.cssText = 'pointer-events: auto;background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer';
+
+        //button for placeorder
+        let porderbutton = document.createElement("button");
+        porderbutton.setAttribute("id", "podrbutton");
+        porderbutton.innerHTML = "Place Order";
+        porderbutton.style.cssText = 'pointer-events: auto;background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer';
+
+        //button for payment
+        let paymentbutton = document.createElement("button");
+        paymentbutton.setAttribute("id", "paybutton");
+        paymentbutton.innerHTML = "Pay Now";
+        paymentbutton.style.cssText = 'pointer-events: auto;background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer';
+
+
+        var paymentdetails= function(){
+            document.getElementById("paymentscreenid").appendChild(paymentbutton);
+        };
+
+        //action after placeorder button click
+        porderbutton.addEventListener("click", function () {
+            orderscreen.style.display = "none";
+            insertAfter(videodiv, paymentscreen);
+            paymentdetails();
+        });
+
+        var orderdetails = function(){
+            document.getElementById("orderscreenid").appendChild(porderbutton);
+        };
+
+        //action after order now button click
+        btnforad1.addEventListener("click", function () {
+            elem.style.display = "none";
+            insertAfter(videodiv, orderscreen);
+            orderdetails();
+        });
+
+
+        var secondad = document.createElement('div');
+        secondad.setAttribute("id", "secondid");
+        secondad.style.cssText = 'position:relative;width:100%;height:50%;opacity:0.5;z-index:1;background:#371;top:0;left:0;pointer-events:none;display:block';
+        document.getElementById("adspace").appendChild(firstad);
+        document.getElementById("adspace").appendChild(secondad);
+        document.getElementById("fid").appendChild(fimg);
+        document.getElementById("fid").appendChild(btnforad1);
+
+        video[0].addEventListener("timeupdate", function(){
+            if(this.currentTime > 10 && this.currentTime < 20){
+                elem.style.display = "block";
+            }
+            else{
+                elem.style.display = "none";
+            }
+        });
+    }
+
+})();
+
+
+
